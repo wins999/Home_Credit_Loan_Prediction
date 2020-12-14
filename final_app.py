@@ -310,7 +310,7 @@ def return_head(filename):
 
 st.image('logo.svg')
 st.title('Loan Prediction')
-st.markdown('## Buisness Problem')
+st.markdown('## Business Problem')
 st.markdown('* Home Credit is a international non-bank financial institution.')
 st.markdown('* The problem is of risk modelling.')
 st.markdown('* Given the data of a client we have to predict if he/she is able to repay loan or  will have difficulty in paying back.')
