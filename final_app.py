@@ -455,6 +455,13 @@ def add_reference():
     st.markdown('* https://www.appliedroots.com/')
     st.markdown('* https://github.com/wins999/Home_Credit_Loan_Prediction')
     
+def contact():
+    st.markdown('## About me')
+    st.markdown('* Linkedin: https://www.linkedin.com/in/winston-fernandes-a14a89145/')
+    st.markdown('* Email 📧: winston23fernandes.wf@gmail.com')
+    st.markdown('* Contact 📱: +91-7507050685')         
+    st.markdown('* If you found this project informative hit the ⭐ on my github repo https://github.com/wins999/Home_Credit_Loan_Prediction')
+    
 
 if error_flag==0:
     df_head=return_head(filename)
@@ -466,6 +473,7 @@ if error_flag==0:
     top5_data=top5_data()
     display_top_5(top5_data)
     add_reference()
+    contact()
     
 
     
