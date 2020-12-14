@@ -355,10 +355,8 @@ def top5_data():
         top5_data = pkl.load(f)
     top5_data['DAYS_BIRTH']=(-1*top5_data['DAYS_BIRTH'])/365
     return top5_data
- 
+      
 def display_top_5(top5_data):
-    
-
     st.markdown('## Top 5 features that helped in prediction ')
     st.markdown('### EXT_SOURCE_1: ')
     st.markdown('Normalized score from external data source.')
@@ -399,7 +397,7 @@ def display_top_5(top5_data):
 
     
    
-    st.markdown('### DAYS_BIRTH: ')
+    st.markdown('### AGE: ')
     st.markdown("Client's age in days at the time of application.")
     fig,axes=plt.subplots()
     axes.set_xlabel('Age')
