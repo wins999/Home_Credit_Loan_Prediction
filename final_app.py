@@ -13,10 +13,9 @@ import warnings
 import gc
 import os
 import seaborn as sns
-import matplotlib.pyplot as plt
-#import plotly.figure_factory as ff
 warnings.filterwarnings("ignore")
-
+import matplotlib.pyplot as plt
+import zipfile 
 
 
 
@@ -262,8 +261,10 @@ def calculate_cibil_score(df):
 
 @st.cache(suppress_st_warning=True)
 def load_past():
-    with open("df_test.pkl", "rb") as f:
-        df_past = pkl.load(f)
+#    with open("df_test.pkl", "rb") as f:
+#        df_past = pkl.load(f)
+    zf = zipfile.ZipFile('df_test.zip', 'r')
+    df_past = pkl.load(zf.open('df_test.pkl'))
     df_past['SK_ID_CURR']=df_past.index
     return df_past
 

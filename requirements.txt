@@ -1,6 +1,6 @@
 seaborn==0.9.0
-streamlit==0.71.0
+pandas==1.1.4
 matplotlib==3.1.0
 pickle5==0.0.11
+streamlit==0.71.0
 numpy==1.16.4
-pandas==1.1.4
