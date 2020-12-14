@@ -295,7 +295,7 @@ def main1(test_point):
     test_pred_proba=0
     for j in range(0,len(lgbm_list)):
         test_pred_proba+=lgbm_list[j].predict_proba(X,num_iteration=lgbm_list[j].best_iteration_)[:,1]/10
-    st.write('Will client be a Defaulter ? (Yes=1/No=0)',int(test_pred_proba>0.5))
+    st.write('Will client be a Defaulter ? (Yes=1/No=0)',str(int(test_pred_proba>0.5)))
     st.write('Probablility of being a Defaulter',str(test_pred_proba))
 
 #user_input = st.text_input("Enter the SK_ID_CURR",100001)
