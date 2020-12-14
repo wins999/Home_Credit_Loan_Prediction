@@ -282,6 +282,7 @@ def main1(test_point):
     df_past = get_past_data(int(test_point['SK_ID_CURR'].values))  
     df=df.join(df_past,how='left', on='SK_ID_CURR')
     del df_past
+    gc.collect()
     with open("lgbm_clf_list_7.pkl", "rb") as f:
         lgbm_list = pkl.load(f)   
     with open("train_column7.pkl", "rb") as f:
@@ -445,6 +446,9 @@ def display_top_5(top5_data):
     
     st.markdown('#### Conclusion')
     st.markdown('* Amount Annuity is a useful feature.')
+    
+    del top5_data
+    gc.collect()
 
     
 
