@@ -398,7 +398,7 @@ def display_top_5(top5_data):
     
    
     st.markdown('### AGE: ')
-    st.markdown("Client's age in days at the time of application.")
+    st.markdown("Client's age at the time of application.")
     fig,axes=plt.subplots()
     axes.set_xlabel('Age')
     axes.set_ylabel('Density')
@@ -471,16 +471,14 @@ if error_flag==0:
     option = st.selectbox("Select the SK_ID_CURR",(df_head['SK_ID_CURR'].values))
     test_point=df_head[df_head['SK_ID_CURR']==int(option)]
     main1(test_point)
-    top5_data=top5_data()
-    display_top_5(top5_data)
-    add_reference()
-    contact()
+
 else:
     st.write("Please use the correct data for proper working of model 🙏")
-    top5_data=top5_data()
-    display_top_5(top5_data)
-    add_reference()
-    contact()
+    
+top5_data=top5_data()
+display_top_5(top5_data)
+add_reference()
+contact()
     
     
 
