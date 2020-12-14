@@ -473,6 +473,13 @@ if error_flag==0:
     display_top_5(top5_data)
     add_reference()
     contact()
+else:
+    st.write("Please use the correct data for proper working of model 🙏")
+    top5_data=top5_data()
+    display_top_5(top5_data)
+    add_reference()
+    contact()
+    
     
 
     
