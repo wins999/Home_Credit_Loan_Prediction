@@ -453,7 +453,6 @@ def add_reference():
     st.markdown('* https://www.kaggle.com/c/home-credit-default-risk')
     st.markdown('* https://www.streamlit.io/')
     st.markdown('* https://www.appliedroots.com/')
-    st.markdown('* https://github.com/wins999/Home_Credit_Loan_Prediction')
     
 def contact():
     st.markdown('## About me')
