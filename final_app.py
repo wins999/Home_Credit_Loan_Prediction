@@ -23,7 +23,7 @@ import zipfile
 def file_selector(folder_path='.'):
     filenames = os.listdir(folder_path)
     filenames.sort()
-    selected_filename = st.selectbox('Select a file', filenames)
+    selected_filename = st.selectbox('Select correct or error data', filenames)
     return os.path.join(folder_path, selected_filename)
 
 #if st.checkbox('Select a file in current directory'):
