@@ -22,6 +22,7 @@ import zipfile
 #@st.cache(suppress_st_warning=True)
 def file_selector(folder_path='.'):
     filenames = os.listdir(folder_path)
+    filenames.sort()
     selected_filename = st.selectbox('Select a file', filenames)
     return os.path.join(folder_path, selected_filename)
 
