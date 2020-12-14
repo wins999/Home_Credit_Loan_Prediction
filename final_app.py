@@ -352,7 +352,7 @@ if (max(df['HOUR_APPR_PROCESS_START'])>24):
 def top5_data():
     with open("train_data_top_5.pkl", "rb") as f:
         top5_data = pkl.load(f)
-    top5_data['DAYS_BIRTH']=-1*top5_data['DAYS_BIRTH']
+    top5_data['DAYS_BIRTH']=(-1*top5_data['DAYS_BIRTH'])/365
     return top5_data
  
 def display_top_5(top5_data):
@@ -401,14 +401,14 @@ def display_top_5(top5_data):
     st.markdown('### DAYS_BIRTH: ')
     st.markdown("Client's age in days at the time of application.")
     fig,axes=plt.subplots()
-    axes.set_xlabel('DAYS_BIRTH')
+    axes.set_xlabel('Age')
     axes.set_ylabel('Density')
     sns.kdeplot(top5_data.loc[top5_data['TARGET']==0,'DAYS_BIRTH'],label='Will Repay')
     sns.kdeplot(top5_data.loc[top5_data['TARGET']==1,'DAYS_BIRTH'],label='Will Default')
     st.pyplot(fig)
     st.markdown('#### Analysis')
-    st.markdown('* Client having age (in days) less than 15000 have high probability of being default. ')
-    st.markdown('* Client having age (in days) greater than 15000 have high probability of repaying loan.')
+    st.markdown('* Client having age  less than 40 have high probability of being default. ')
+    st.markdown('* Client having age  greater than 40 have high probability of repaying loan.')
     st.markdown('* There is a visible sepration between two classes.')
     st.markdown('#### Conclusion')
     st.markdown('Younger clients are more likely to default as compared to older.')
