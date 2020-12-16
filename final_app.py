@@ -292,19 +292,25 @@ def main1(test_point):
     df=calculate_cibil_score(df)
     scaler = pkl.load(open('scaler_7.sav', 'rb'))
     X=df[train_column]
+    top5_feat=X[['EXT_SOURCE_1','PAYMENT_RATE','DAYS_BIRTH','EXT_SOURCE_3','AMT_ANNUITY']]
+    top5_feat['DAYS_BIRTH']=-1*top5_feat['DAYS_BIRTH']/365
+    top5_feat.rename(columns={"DAYS_BIRTH": "AGE"},inplace=True)
+    st.write('These are the values of top 5 features used in prediction')
+    st.dataframe(top5_feat)
     X=scaler.transform(X)
     test_pred_proba=0
     for j in range(0,len(lgbm_list)):
         test_pred_proba+=lgbm_list[j].predict_proba(X,num_iteration=lgbm_list[j].best_iteration_)[:,1]/10
-    st.write('Will client be a Defaulter ? (Yes=1/No=0): ',str(int(test_pred_proba>0.5)))
-    st.write('Probablility of being a Defaulter: ',str(test_pred_proba))
-
+    st.write('Probablility of being a Defaulter: ',str(round(test_pred_proba[0],6)))
+    st.write('Percentage of being a Defaulter: ',str(round(test_pred_proba[0]*100,2))+'%')
+    
+    
 #user_input = st.text_input("Enter the SK_ID_CURR",100001)
 
 @st.cache(suppress_st_warning=True)
 def return_head(filename):
     df=pd.read_csv(filename)
-    return df.head(5).reset_index()
+    return df.head(10).reset_index()
 
 
 
@@ -448,7 +454,7 @@ def display_top_5(top5_data):
     del top5_data
     gc.collect()
 
-    
+ 
 
 def add_reference():
     st.markdown('## Reference')
@@ -471,6 +477,8 @@ if error_flag==0:
     option = st.selectbox("Select the SK_ID_CURR",(df_head['SK_ID_CURR'].values))
     test_point=df_head[df_head['SK_ID_CURR']==int(option)]
     main1(test_point)
+    
+
 
 else:
     st.write("Please use the correct data for proper working of model 🙏")
