@@ -273,6 +273,8 @@ def load_past():
 def get_past_data(id):
     past=load_past()
     test_point_past_data=past[past['SK_ID_CURR']==id]
+    del past
+    gc.collect()
     test_point_past_data.drop('SK_ID_CURR',axis=1,inplace=True)
     return test_point_past_data
 
