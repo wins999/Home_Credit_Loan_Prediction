@@ -310,7 +310,10 @@ def main1(test_point):
 @st.cache(suppress_st_warning=True)
 def return_head(filename):
     df=pd.read_csv(filename)
-    return df.head(10).reset_index()
+    head=df.head(10).reset_index()
+    del df
+    gc.collect()
+    return head
 
 
 
