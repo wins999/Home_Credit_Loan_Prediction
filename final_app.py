@@ -261,7 +261,7 @@ def calculate_cibil_score(df):
     return df
 
 @st.cache(suppress_st_warning=True)
-def load_past():
+def load_past(TTL=60*10):
 #    with open("df_test.pkl", "rb") as f:
 #        df_past = pkl.load(f)
     zf = zipfile.ZipFile('df_test.zip', 'r')
@@ -269,7 +269,6 @@ def load_past():
     df_past['SK_ID_CURR']=df_past.index
     return df_past
 
-@st.cache(suppress_st_warning=True)
 def get_past_data(id):
     past=load_past()
     test_point_past_data=past[past['SK_ID_CURR']==id]
