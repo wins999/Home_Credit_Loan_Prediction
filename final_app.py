@@ -190,7 +190,7 @@ def feature_engineering_on_app_train_test(test_point):
     
     return df
 
-#@st.cache(suppress_st_warning=True)
+@st.cache(ttl=60*5,suppress_st_warning=True)
 def missing_values():
     with open("missing_3_list_7.pkl", "rb") as f:
         missing_3_list = pkl.load(f)
@@ -260,8 +260,8 @@ def calculate_cibil_score(df):
 
     return df
 
-@st.cache(suppress_st_warning=True)
-def load_past(TTL=60*10):
+@st.cache(ttl=60*5,suppress_st_warning=True)
+def load_past():
 #    with open("df_test.pkl", "rb") as f:
 #        df_past = pkl.load(f)
     zf = zipfile.ZipFile('df_test.zip', 'r')
@@ -308,7 +308,7 @@ def main1(test_point):
     
 #user_input = st.text_input("Enter the SK_ID_CURR",100001)
 
-@st.cache(suppress_st_warning=True)
+@st.cache(ttl=60*5,suppress_st_warning=True)
 def return_head(filename):
     df=pd.read_csv(filename)
     head=df.head(10).reset_index()
@@ -359,7 +359,7 @@ if (max(df['HOUR_APPR_PROCESS_START'])>24):
     error_flag=1
     
 
-@st.cache(suppress_st_warning=True)      
+@st.cache(ttl=60*5,suppress_st_warning=True)      
 def top5_data():
     with open("train_data_top_5.pkl", "rb") as f:
         top5_data = pkl.load(f)
@@ -472,7 +472,8 @@ def contact():
     st.markdown('* Email 📧: winston23fernandes.wf@gmail.com')
     st.markdown('* Contact 📱: +91-7507050685')         
     st.markdown('* If you found this project informative hit the ⭐ on my github repo https://github.com/wins999/Home_Credit_Loan_Prediction')
-    
+    st.markdown('* Blog link: https://winston23fernandes-wf.medium.com/home-credit-loan-default-risk-7d660ce22942')
+   
 
 if error_flag==0:
     df_head=return_head(filename)
